@@ -1,7 +1,10 @@
-name: Build PDF
+name: Build LaTeX Document
 
 on:
   push:
+    branches:
+      - main  # oder ein anderer Branch, den du verwenden möchtest
+  pull_request:
     branches:
       - main
 
@@ -10,12 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Install TeX Live
       run: |
-        sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
+        sudo apt-get update
+        sudo apt-get install -y texlive-full  # Installiere vollständige TeX Live Distribution
+        sudo apt-get install -y texlive-latex-extra  # Installiere zusätzliche Pakete, wenn benötigt
 
-    - name: Compile LaTeX to PDF
-      run: pdflatex 01.tex 
+    - name: Compile LaTeX document
+      run: |
+        pdflatex 01.tex  # Kompiliere dein Dokument
+        pdflatex 01.tex  # Wende es ein zweites Mal an, um Verweise zu aktualisieren
+
+    - name: Upload PDF
+      uses: actions/upload-artifact@v2
+      with:
+        name: document
+        path: 01.pdf  # Pfad zu deiner PDF-Datei
+
