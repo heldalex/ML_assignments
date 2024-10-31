@@ -1,0 +1,125 @@
+\documentclass[a4paper]{article} 
+\input{head/packages}
+\usepackage{enumitem, graphicx}
+
+\begin{document}
+
+\fancyhead[C]{}
+\hrule \medskip
+\begin{minipage}{0.295\textwidth} 
+\raggedright
+\footnotesize
+Friedrich Greisiger (5722487)\hfill\\
+Francisco Jose Cortes Aldaco (5978432)\hfill\\ 
+Xenia Morera Martínez (5364350)\hfill\\
+Lea Nickel (5153726)\hfill\\ 
+Alexander Held (5943764)\hfill\\ 
+\end{minipage}
+\begin{minipage}{0.4\textwidth} 
+\centering
+\normalsize 
+Machine Learning\\
+\large 
+Assignment 01\\ 
+\normalsize 
+Team: 15\\ 
+\end{minipage}
+\begin{minipage}{0.295\textwidth} 
+\raggedleft
+\today\hfill\\
+\end{minipage}
+\medskip\hrule 
+\bigskip
+
+%-------------------------------
+%	CONTENTS
+%-------------------------------
+
+\section{General questions}
+\begin{enumerate}
+    \item 
+    Stages: Pre-processing, Feature Extraction, Feature Selection, Model Building, Evaluation \& Model Selection, Post-processing.
+    \item 
+    Supervised learning: the model is trained using labeled data, where each input comes with a corresponding output or label. The goal is for the model to learn a function that maps inputs to the correct outputs, allowing it to make accurate predictions on new, unseen data.
+    
+    In unsupervised learning, the model is trained on data without labeled outputs. The model’s objective is to identify patterns, groupings, or structures within the data.
+    \item 
+    Overfitting: The model is too complex and learns noise in the training data. This will cause the model to perform well on training data but poorly on new unseen data.
+    
+    Underfitting: The model is too simple and fails to capture patterns. As a result it misses important relationships, which leads to poor performance on both training and new data.
+\end{enumerate}
+
+
+
+\section{Naive bayes}
+\begin{enumerate}
+    \item 
+
+The probability that a car is stolen is \( P(\text{yes}) = \frac{6}{10} = 0.6 = 60\% \).
+
+The probability that a car is not stolen is \( P(\text{no}) = \frac{4}{10} = 0.4 = 40\% \).
+
+The probability that a car is red given it is stolen is \( P(\text{red} \mid \text{yes}) = \frac{3}{6} = 0.5 = 50\% \).
+
+The probability that a car is a grand tourer given it is stolen is \( P(\text{grand tourer} \mid \text{yes}) = \frac{2}{6} \approx 0.33 = 33\% \).
+
+The probability that a car is domestic given it is stolen is \( P(\text{domestic} \mid \text{yes}) = \frac{2}{6} \approx 0.33 = 33\% \).
+
+The probability that a car is red given it is not stolen is \( P(\text{red} \mid \text{no}) = \frac{1}{4} = 0.25 = 25\% \).
+
+The probability that a car is a grand tourer given it is not stolen is \( P(\text{grand tourer} \mid \text{no}) = \frac{2}{4} = 0.5 = 50\% \).
+
+The probability that a car is domestic given it is not stolen is \( P(\text{domestic} \mid \text{no}) = \frac{3}{4} = 0.75 = 75\% \).
+
+\item 
+
+\[
+Z = \sum_{k=1}^{2} P(y = k) \prod_{i=1}^{3} P(x_i | y = k)
+\]
+
+\begin{align*}
+Z &= P(y = \text{yes}) \cdot P(x_1 = \text{red} | y = \text{yes}) \cdot P(x_2 = \text{grand tourer} | y = \text{yes}) \cdot P(x_3 = \text{domestic} | y = \text{yes}) \\
+&\quad + P(y = \text{no}) \cdot P(x_1 = \text{red} | y = \text{no}) \cdot P(x_2 = \text{grand tourer} | y = \text{no}) \cdot P(x_3 = \text{domestic} | y = \text{no})
+\end{align*}
+
+\[
+Z = (0.6 \times 0.5 \times 0.33 \times 0.33) + (0.4 \times 0.25 \times 0.5 \times 0.75)
+\]
+
+\[
+Z = 0.03267 + 0.0375 = 0.07017
+\]
+
+\[
+P(y = \text{yes} | x_1 = \text{red}, x_2 = \text{grand tourer}, x_3 = \text{domestic}) = \frac{P(y = \text{yes}) \prod_{i=1}^{3} P(x_i | y = \text{yes})}{Z}
+\]
+
+\[
+P(y = \text{yes} | x_1 = \text{red}, x_2 = \text{grand tourer}, x_3 = \text{domestic}) = \frac{0.6 \times 0.5 \times 0.33 \times 0.33}{0.07017}
+\]
+
+\[
+P(y = \text{yes} | x_1 = \text{red}, x_2 = \text{grand tourer}, x_3 = \text{domestic}) = \frac{0.03267}{0.07017} = 46.67\%
+\]
+
+
+    \item 
+
+Benefits: Naive Bayes is simple, computationally efficient, and effective for high-dimensional data like text. It performs well even with small datasets and can handle irrelevant features due to the independence assumption.
+
+Downsides: The strong independence assumption is often unrealistic, leading to poor performance with correlated features. Probability estimates may also be inaccurate, limiting its effectiveness in complex tasks.
+
+    \item 
+\end{enumerate}
+
+
+
+\section{Ranking Losses}
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+
+
+
+\end{document}
