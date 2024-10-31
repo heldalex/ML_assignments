@@ -28,8 +28,7 @@ jobs:
         pdflatex 01.tex  # Wende es ein zweites Mal an, um Verweise zu aktualisieren
 
     - name: Upload PDF
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # Aktualisiere auf die neueste Version
       with:
         name: document
         path: 01.pdf  # Pfad zu deiner PDF-Datei
-
