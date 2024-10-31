@@ -1,0 +1,21 @@
+name: Build PDF
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install TeX Live
+      run: |
+        sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
+
+    - name: Compile LaTeX to PDF
+      run: pdflatex 01.tex 
