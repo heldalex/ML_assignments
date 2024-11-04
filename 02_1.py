@@ -26,7 +26,7 @@ print(predicted_cost)
 
 # exercise 1.3.
 real_cost = 427451.1
-least_squares_loss = (predicted_cost - real_cost) ** 2
+least_squares = (predicted_cost - real_cost) ** 2
 L_1 = abs(real_cost - predicted_cost)
 
-print(least_squares_loss, L_1)
+print(least_squares, L_1)
